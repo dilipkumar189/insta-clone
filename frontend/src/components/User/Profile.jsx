@@ -106,7 +106,7 @@ const Profile = () => {
 
                         {/* profile picture */}
                         <div className="sm:w-1/3 flex justify-center mx-auto sm:mx-0">
-                            <img draggable="false" className="w-40 h-40 rounded-full object-cover" src={user?.avatar?.url} alt="" />
+                            <img draggable="false" className="w-40 h-40 rounded-full object-cover" src={user.avatar} alt="" />
                         </div>
 
                         {/* profile details */}
