@@ -21,14 +21,14 @@ const UpdateProfile = () => {
     const [website, setWebsite] = useState("");
     const [bio, setBio] = useState("");
     const [email, setEmail] = useState("");
-    const [oldAvatar, setOldAvatar] = useState("");
+    const [oldAvatar, setOldAvatar] = useState({});
     const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("");
 
     const handleUpdate = (e) => {
         e.preventDefault();
 
-        const userCheck = /^[a-z0-9_.-]{6,25}$/igm;
+        const userCheck = /^[a-z0-9_-]{6,16}$/igm;
 
         if (!userCheck.test(username)) {
             toast.error("Invalid Username");
@@ -49,13 +49,14 @@ const UpdateProfile = () => {
     const handleAvatarChange = (e) => {
         const reader = new FileReader();
         setAvatar("");
+        setAvatarPreview("");
         reader.onload = () => {
             if (reader.readyState === 2) {
                 setAvatarPreview(reader.result);
+                setAvatar(reader.result);
             }
         };
         reader.readAsDataURL(e.target.files[0]);
-        setAvatar(e.target.files[0]);
     }
 
     useEffect(() => {
@@ -91,7 +92,7 @@ const UpdateProfile = () => {
             >
                 <div className="flex items-center gap-8 ml-20">
                     <div className="w-11 h-11">
-                        <img draggable="false" className="w-full h-full rounded-full border object-cover" src={avatarPreview ? avatarPreview : oldAvatar} alt="avatar" />
+                        <img draggable="false" className="w-full h-full rounded-full border object-cover" src={avatarPreview ? avatarPreview : oldAvatar?.url} alt="avatar" />
                     </div>
                     <div className="flex flex-col gap-0">
                         <span className="text-xl">{username}</span>

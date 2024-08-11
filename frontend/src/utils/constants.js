@@ -31,10 +31,6 @@ export const stories = [
         image: "tailwind"
     },
     {
-        title: "Heroku",
-        image: "heroku"
-    },
-    {
         title: "MaterialUI",
         image: "mui"
     },
@@ -45,10 +41,6 @@ export const stories = [
     {
         title: "Multer",
         image: "multer"
-    },
-    {
-        title: "AWS S3",
-        image: "aws-s3"
     },
     {
         title: "Sendgrid",
