@@ -1,18 +1,26 @@
 const mongoose = require("mongoose");
 
 const connectDatabase = () => {
-  const dbUrl =
+  const dbURI =
     process.env.NODE_ENV === "production"
-      ? process.env.DB_URL
+      ? process.env.MONGO_URI
       : "mongodb://127.0.0.1:27017/instagram";
 
   mongoose
-    .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(dbURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     .then(() => {
-      console.log("DB Connected");
+      console.log(
+        "Mongoose Connected to",
+        process.env.NODE_ENV === "production"
+          ? "production database"
+          : "local database"
+      );
     })
     .catch((error) => {
-      console.error("DB Connection Error:", error);
+      console.log("Database connection error:", error);
     });
 };
 
