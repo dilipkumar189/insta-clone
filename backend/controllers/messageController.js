@@ -2,7 +2,7 @@ const catchAsync = require("../middlewares/catchAsync");
 const Message = require("../models/messageModel");
 const Chat = require("../models/chatModel");
 
-// Send New Message
+// Send New Messages
 exports.newMessage = catchAsync(async (req, res, next) => {
 
     const { chatId, content } = req.body;
