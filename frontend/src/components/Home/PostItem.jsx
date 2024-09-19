@@ -15,7 +15,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
     const commentInput = useRef(null);
 
     const { user } = useSelector((state) => state.user);
-    // const { loading, post } = useSelector((state) => state.postDetails);
+    const { loading, post } = useSelector((state) => state.postDetails);
 
     const [allLikes, setAllLikes] = useState(likes);
     const [allComments, setAllComments] = useState(comments);
